@@ -11,12 +11,17 @@ import {LoginModule} from "./pages/login/login.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatInputModule} from "@angular/material/input";
 import {RegisterModule} from "./pages/register/register.module";
+import {HomeModule} from "./pages/home/home.module";
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import {MovieEditModule} from "./pages/movie-edit/movie-edit.module";
+import {UserManagementModule} from "./pages/user-management/user-management.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,10 @@ import {RegisterModule} from "./pages/register/register.module";
     MatIconModule,
     MatInputModule,
     LoginModule,
-    RegisterModule
+    RegisterModule,
+    HomeModule,
+    MovieEditModule,
+    UserManagementModule
   ],
   providers: [],
   bootstrap: [AppComponent]
