@@ -4,7 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
-import { MatToolbar } from '@angular/material';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {LoginModule} from "./pages/login/login.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatInputModule} from "@angular/material/input";
+
 
 @NgModule({
   declarations: [
@@ -14,7 +20,12 @@ import { MatToolbar } from '@angular/material';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbar
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
