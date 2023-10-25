@@ -10,6 +10,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {LoginModule} from "./pages/login/login.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatInputModule} from "@angular/material/input";
+import {RegisterModule} from "./pages/register/register.module";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatInputModule} from "@angular/material/input";
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    LoginModule
+    LoginModule,
+    RegisterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
