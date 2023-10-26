@@ -1,0 +1,55 @@
+.home-page{
+  background-color: #080F28;
+  height: 100%;
+  &__banner-card {
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 0px;
+    padding-bottom: 20px;
+    &__banner-image {
+      width: 100%;
+      max-height: 400px;
+    }
+
+    &__banner-text {
+      margin-top: 20px;
+
+    }
+
+  }
+
+}
+
+.film-list{
+
+  .film-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .film-card {
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+
+  .film-image {
+    width: 100%;
+    max-height: 300px;
+  }
+
+  mat-card-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  mat-card-content {
+    padding: 8px;
+  }
+
+}
+

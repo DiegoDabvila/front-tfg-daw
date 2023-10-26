@@ -1,19 +1,26 @@
+<div class="register-container">
+  <mat-card class="register-container__register-card">
+    <mat-card-title>Registro</mat-card-title>
+    <mat-card-content>
+      <form>
+        <mat-form-field class="register-container__form-field">
+          <input matInput placeholder="Nombre" name="name">
+        </mat-form-field>
 
-<div class="registration-container">
-  <h2>Registro</h2>
-  <form>
-    <div class="registration-container__form-group">
-      <label for="name">Nombre:</label>
-      <input type="text" id="name" name="name"  required>
-    </div>
-    <div class="registration-container__form-group">
-      <label for="email">Correo Electrónico:</label>
-      <input type="email" id="email" name="email"  required>
-    </div>
-    <div class="registration-container__form-group">
-      <label for="RegistrationPassword">Contraseña:</label>
-      <input type="password" id="RegistrationPassword" name="password"  required>
-    </div>
-    <button>Registrarse</button>
-  </form>
+        <mat-form-field class="register-container__form-field">
+          <input matInput placeholder="Correo Electrónico" name="email">
+        </mat-form-field>
+
+        <mat-form-field class="register-container__form-field">
+          <input matInput type="password" placeholder="Contraseña" name="password">
+        </mat-form-field>
+
+        <mat-form-field class="register-container__form-field">
+          <input matInput type="password" placeholder="Confirmar Contraseña" name="confirmPassword">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="register-container__button">Registrarse</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

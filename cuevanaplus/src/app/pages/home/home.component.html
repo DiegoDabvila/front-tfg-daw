@@ -1,1 +1,37 @@
-<p>home works!</p>
+
+<div class="home-page">
+  <app-header></app-header>
+
+  <mat-card class="home-page__banner-card">
+    <img src="../../../assets/images/cuevanaBanner.png" alt="Imagen de banner" class="home-page__banner-card__banner-image" />
+    <div class="home-page__banner-card__banner-text">
+      <h1>Bienvenidos CuevanaPlus</h1>
+      <p>Como Cuevana pero con mas y mejores peliculas</p>
+    </div>
+  </mat-card>
+</div>
+
+
+<div class="film-list">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Listado de Películas</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="film-card-container">
+        <mat-card *ngFor="let film of films" class="film-card">
+          <img [src]="film.movie.imageUrl" alt="{{ film.movie.title }}" class="film-image" />
+          <mat-card-title>{{ film.movie.title }}</mat-card-title>
+          <mat-card-content>
+            <p>Director: {{ film.movie.director.name }}</p>
+            <p>Fecha de lanzamiento: {{ film.movie.releaseDate | date }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+
