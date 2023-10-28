@@ -1,4 +1,29 @@
-<div class="app">
-  <router-outlet ></router-outlet>
-</div>
+
+<mat-sidenav-container class="side">
+  <mat-sidenav #sidenav mode="over">
+    <div class="app">
+      sadfasd
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="mat-toolbar">
+      <div class="header">
+        <div class="header__right-info">
+          <button (click)="openSidenav()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>home</mat-icon>
+          </button>
+          <span>CuevanaPlus</span>
+        </div>
+        <div class="header__left-info">
+          <span>Nombre de usuario</span>
+        </div>
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
 

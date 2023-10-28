@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cuevanaplus';
+
+  @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
+
+  openSidenav() {
+    this.sidenav.open();
+  }
 }

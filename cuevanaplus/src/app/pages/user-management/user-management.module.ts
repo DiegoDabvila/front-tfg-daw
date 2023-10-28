@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserManagementComponent } from './user-management.component';
-import {HeaderModule} from "../../components/header/header.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -20,7 +19,6 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
   imports: [
     CommonModule,
     UserManagementRoutingModule,
-    HeaderModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
