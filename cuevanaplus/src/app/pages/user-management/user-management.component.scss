@@ -1,0 +1,60 @@
+.user-management-page {
+  display: flex;
+  justify-content: center;
+  height: 60%;
+  background-color: #080F28;
+  margin: 65px 0 20px 0;
+
+  &__edit-card {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: #1E2747;
+
+    &__edit-container {
+      &__edit-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      &__form-field {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      &__button {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        background-color: #007AFF;
+      }
+    }
+
+    &__user-list{
+      height: 300px;
+      overflow-y: auto;
+      width: 200px;
+    }
+
+    &__user-list::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &__user-list::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 4px;
+    }
+
+    &__user-list::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+
+
+  }
+
+
+}

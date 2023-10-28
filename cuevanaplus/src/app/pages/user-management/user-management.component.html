@@ -1,1 +1,35 @@
-<p>user-management works!</p>
+<app-header></app-header>
+<div class="user-management-page">
+  <mat-card class="user-management-page__edit-card">
+
+    <div class="user-management-page__edit-card__edit-container">
+      <mat-card-title>{{createOrEdit}}</mat-card-title>
+      <mat-card-content>
+        <form #userForm="ngForm">
+          <mat-form-field class="user-management-page__edit-card__edit-container__form-field">
+            <input matInput placeholder="Nombre" name="name" [(ngModel)]="usuario.name" required>
+          </mat-form-field>
+
+          <mat-form-field class="user-management-page__edit-card__edit-container__form-field">
+            <input matInput placeholder="Apellidos" name="surnames" [(ngModel)]="usuario.surnames">
+          </mat-form-field>
+
+          <mat-form-field class="user-management-page__edit-card__edit-container__form-field">
+            <input matInput placeholder="Nombre de usuario" name="userName" [(ngModel)]="usuario.username">
+          </mat-form-field>
+
+          <button mat-raised-button class="user-management-page__edit-card__edit-container__button" [disabled]="!userForm.valid">Editar</button>
+        </form>
+      </mat-card-content>
+    </div>
+
+
+
+    <div class="user-management-page__edit-card__user-list ">
+      <mat-list class="custom-scroll-list">
+        <mat-list-item (click)="selectUser(user)" *ngFor="let user of users">{{user.name}}, {{user.surnames}}</mat-list-item>
+      </mat-list>
+    </div>
+
+  </mat-card>
+</div>
