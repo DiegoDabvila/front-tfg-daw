@@ -9,14 +9,14 @@
     </div>
   </mat-card>
   <div class="film-list">
-  <div>
+
     <div class="film-list__header">
       <span><h1>Listado de Películas</h1></span>
     </div>
 
-    <div class="film-card-container">
-      <mat-card *ngFor="let film of films" class="film-card-container__film-card">
-        <img [src]="film.movie.imageUrl" alt="{{ film.movie.title }}" class="film-card-container__film-card__film-image" />
+    <div class="film-list__film-card-container">
+      <mat-card *ngFor="let film of films" class="film-list__film-card-container__film-card">
+        <img [src]="film.movie.imageUrl" alt="{{ film.movie.title }}" class="film-list__film-card-container__film-card__film-image" />
         <mat-card-title>{{ film.movie.title }}</mat-card-title>
         <mat-card-content>
           <p>Director: {{ film.movie.director.name }}</p>
@@ -26,6 +26,6 @@
       </mat-card>
     </div>
   </div>
-</div>
+
 </div>
 

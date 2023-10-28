@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit {
 
   films: RentedMovieResponse[] = []
-  numberOfMovies = 100
+  numberOfMovies = 25
 
   constructor(private router: Router) { }
 
