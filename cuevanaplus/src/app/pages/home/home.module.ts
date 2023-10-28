@@ -5,16 +5,18 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import {HeaderModule} from "../../components/header/header.module";
 import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
     HomeComponent
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    HeaderModule,
-    MatCardModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        HeaderModule,
+        MatCardModule,
+        MatButtonModule
+    ]
 })
 export class HomeModule { }

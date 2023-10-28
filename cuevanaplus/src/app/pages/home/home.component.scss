@@ -10,45 +10,66 @@
     padding-bottom: 20px;
     &__banner-image {
       width: 100%;
-      max-height: 400px;
+      max-height: 475px;
     }
-
     &__banner-text {
       margin-top: 20px;
-
     }
-
   }
-
 }
-
 .film-list{
+
+  &__header{
+    height: 60px;
+    background-color: #1E2747;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    span{
+      h1{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    }
+  }
 
   .film-card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-  }
 
-  .film-card {
-    width: 300px;
-    margin: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
+    &__film-card {
+      width: 220px;
+      height: 460px;
+      margin: 20px;
+      padding: 20px;
+      background-color: #1E2747;
 
-  .film-image {
-    width: 100%;
-    max-height: 300px;
-  }
+      &__film-image {
+        width: 100%;
+        max-height: 300px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+      }
 
-  mat-card-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
+      mat-card-title {
+        font-size: 18px;
+      }
 
-  mat-card-content {
-    padding: 8px;
+      mat-card-content {
+        padding: 8px;
+      }
+
+      button{
+        background-color: #3d4f91;
+      }
+      button:hover{
+        background-color:  #007aff;
+      }
+    }
   }
 
 }

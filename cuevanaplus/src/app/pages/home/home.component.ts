@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RentedMovieResponse} from "../../Interfaces/movie.interface";
+import {retedMovieResponseMock} from "../../mocks/rented-movie-response.mock";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -8,120 +10,19 @@ import {RentedMovieResponse} from "../../Interfaces/movie.interface";
 })
 export class HomeComponent implements OnInit {
 
-  films: RentedMovieResponse[] = [
-    {
-      id: 1,
-      userId: 101,
-      movieId: 201,
-      rentalDate: new Date('2023-01-15'),
-      movie: {
-        id: 201,
-        title: "Pelicula de Ejemplo",
-        releaseDate: new Date('2022-12-01'),
-        imageUrl: "https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp",
-        director: {
-          name: "Director de Prueba",
-          surnames: "Apellidos del Director",
-          bio: "Biografía del director de prueba",
-          age: 45
-        }
-      }
-    },
-    {
-      id: 1,
-      userId: 101,
-      movieId: 201,
-      rentalDate: new Date('2023-01-15'),
-      movie: {
-        id: 201,
-        title: "Pelicula de Ejemplo",
-        releaseDate: new Date('2022-12-01'),
-        imageUrl: "https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp",
-        director: {
-          name: "Director de Prueba",
-          surnames: "Apellidos del Director",
-          bio: "Biografía del director de prueba",
-          age: 45
-        }
-      }
-    },
-    {
-      id: 1,
-      userId: 101,
-      movieId: 201,
-      rentalDate: new Date('2023-01-15'),
-      movie: {
-        id: 201,
-        title: "Pelicula de Ejemplo",
-        releaseDate: new Date('2022-12-01'),
-        imageUrl: "https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp",
-        director: {
-          name: "Director de Prueba",
-          surnames: "Apellidos del Director",
-          bio: "Biografía del director de prueba",
-          age: 45
-        }
-      }
-    },
-    {
-      id: 1,
-      userId: 101,
-      movieId: 201,
-      rentalDate: new Date('2023-01-15'),
-      movie: {
-        id: 201,
-        title: "Pelicula de Ejemplo",
-        releaseDate: new Date('2022-12-01'),
-        imageUrl: "https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp",
-        director: {
-          name: "Director de Prueba",
-          surnames: "Apellidos del Director",
-          bio: "Biografía del director de prueba",
-          age: 45
-        }
-      }
-    },
-    {
-      id: 1,
-      userId: 101,
-      movieId: 201,
-      rentalDate: new Date('2023-01-15'),
-      movie: {
-        id: 201,
-        title: "Pelicula de Ejemplo",
-        releaseDate: new Date('2022-12-01'),
-        imageUrl: "https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp",
-        director: {
-          name: "Director de Prueba",
-          surnames: "Apellidos del Director",
-          bio: "Biografía del director de prueba",
-          age: 45
-        }
-      }
-    },
-    {
-      id: 1,
-      userId: 101,
-      movieId: 201,
-      rentalDate: new Date('2023-01-15'),
-      movie: {
-        id: 201,
-        title: "Pelicula de Ejemplo",
-        releaseDate: new Date('2022-12-01'),
-        imageUrl: "https://i.3djuegos.com/juegos/17687/mortal_kombat_la_pel__cula__2021_/fotos/ficha/mortal_kombat_la_pel__cula__2021_-5367156.webp",
-        director: {
-          name: "Director de Prueba",
-          surnames: "Apellidos del Director",
-          bio: "Biografía del director de prueba",
-          age: 45
-        }
-      }
-    }
-  ];
+  films: RentedMovieResponse[] = []
+  numberOfMovies = 100
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    for(let i = 0; i < this.numberOfMovies; i++){
+      this.films.push(retedMovieResponseMock())
+    }
+  }
+
+  goTodetailPage(movieId: number){
+    this.router.navigate(['movie-edit'],{queryParams:{movieId}})
   }
 
 }

@@ -1,1 +1,42 @@
-<p>movie-edit works!</p>
+<app-header></app-header>
+<div class="movie-edit-page">
+  <mat-card class="movie-edit-page__edit-card">
+    <div class="movie-edit-page__edit-card__film-card">
+      <img [src]="film.movie.imageUrl" alt="{{ film.movie.title }}" class="movie-edit-page__edit-card__film-card__film-image" />
+      <mat-card-title>{{ film.movie.title }}</mat-card-title>
+      <mat-card-content>
+        <p>Director: {{ film.movie.director.name }}</p>
+        <p>Fecha de lanzamiento: {{ film.movie.releaseDate | date: 'dd/MM/yyyy' }}</p>
+      </mat-card-content>
+    </div>
+
+    <div class="edit-container">
+      <mat-card-title>Editar: {{ film.movie.title }}</mat-card-title>
+      <mat-card-content>
+        <form>
+          <mat-form-field class="edit-container__form-field">
+            <input matInput placeholder="Nombre" name="name">
+          </mat-form-field>
+
+          <mat-form-field class="edit-container__form-field">
+            <input matInput placeholder="Año" name="year">
+          </mat-form-field>
+
+          <mat-form-field class="edit-container__form-field">
+            <input matInput placeholder="Puntuación" name="score">
+          </mat-form-field>
+
+          <mat-form-field class="edit-container__form-field">
+            <input matInput placeholder="Portada" name="imageUrl">
+          </mat-form-field>
+
+          <mat-form-field class="edit-container__form-field">
+            <input matInput placeholder="Director" name="director">
+          </mat-form-field>
+
+          <button mat-raised-button class="edit-container__button">Editar</button>
+        </form>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
