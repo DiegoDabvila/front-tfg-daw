@@ -14,10 +14,12 @@ enum OpcionesUsuarioEnum {
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
-  public usuario: Partial<UserInterface> = {
+  public user: UserInterface = {
+    id:0,
     name: '',
     surnames: '',
-    username: ''
+    username: '',
+    isAdmin: false
   };
   users: UserInterface[]=[]
   numberOfMovies = 25
@@ -29,9 +31,9 @@ export class UserManagementComponent implements OnInit {
       this.users.push(
         {
           id: 1,
-          username: 'Perez',
-          name: 'Jose',
-          surnames: 'string',
+          username: 'Peras',
+          name: 'Pablo',
+          surnames: 'Perez',
           isAdmin: true
         })
     }
@@ -39,7 +41,11 @@ export class UserManagementComponent implements OnInit {
 
   selectUser(event: UserInterface){
     this.createOrEdit = `${OpcionesUsuarioEnum.EditarUsuario} ${event.name}`
-    this.usuario = event
+    this.user = event
+  }
+
+  editUser(user: Partial<UserInterface>){
+    console.log(user)
   }
 
 }

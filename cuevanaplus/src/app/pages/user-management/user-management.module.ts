@@ -10,6 +10,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {FormsModule} from "@angular/forms";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {FormsModule} from "@angular/forms";
     MatInputModule,
     MatButtonModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule
   ]
 })
 export class UserManagementModule { }

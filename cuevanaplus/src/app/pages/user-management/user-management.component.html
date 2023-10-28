@@ -7,23 +7,25 @@
       <mat-card-content>
         <form #userForm="ngForm">
           <mat-form-field class="user-management-page__edit-card__edit-container__form-field">
-            <input matInput placeholder="Nombre" name="name" [(ngModel)]="usuario.name" required>
+            <input matInput placeholder="Nombre" name="name" [(ngModel)]="user.name" required>
           </mat-form-field>
 
           <mat-form-field class="user-management-page__edit-card__edit-container__form-field">
-            <input matInput placeholder="Apellidos" name="surnames" [(ngModel)]="usuario.surnames">
+            <input matInput placeholder="Apellidos" name="surnames" [(ngModel)]="user.surnames" required>
           </mat-form-field>
 
           <mat-form-field class="user-management-page__edit-card__edit-container__form-field">
-            <input matInput placeholder="Nombre de usuario" name="userName" [(ngModel)]="usuario.username">
+            <input matInput placeholder="Nombre de usuario" name="userName" [(ngModel)]="user.username" required>
           </mat-form-field>
 
-          <button mat-raised-button class="user-management-page__edit-card__edit-container__button" [disabled]="!userForm.valid">Editar</button>
+          <mat-checkbox class="user-management-page__edit-card__edit-container__form-field" name="isAdmin" [(ngModel)]="user.isAdmin">
+            <label>Es administrador</label>
+          </mat-checkbox>
+
+          <button mat-raised-button class="user-management-page__edit-card__edit-container__button" [disabled]="!userForm.valid" (click)="editUser(user)">Editar</button>
         </form>
       </mat-card-content>
     </div>
-
-
 
     <div class="user-management-page__edit-card__user-list ">
       <mat-list class="custom-scroll-list">
