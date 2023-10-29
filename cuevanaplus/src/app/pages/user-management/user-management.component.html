@@ -22,7 +22,7 @@
             <label>Es administrador</label>
           </mat-checkbox>
 
-          <button mat-raised-button class="user-management-page__edit-card__edit-container__button" [disabled]="!userForm.valid" (click)="editUser(user)">Editar</button>
+          <button mat-raised-button class="user-management-page__edit-card__edit-container__button" [disabled]="userForm.invalid" (click)="editUser(user)">Editar</button>
         </form>
       </mat-card-content>
     </div>

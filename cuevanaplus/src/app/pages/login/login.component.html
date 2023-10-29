@@ -2,16 +2,16 @@
   <mat-card class="login-container__login-card">
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
-      <form>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
         <mat-form-field class="login-container__form-field">
-          <input matInput placeholder="Usuario" name="username">
+          <input matInput placeholder="Usuario" name="username" required ngModel>
         </mat-form-field>
 
         <mat-form-field class="login-container__form-field">
-          <input matInput type="password" placeholder="Contraseña" name="password">
+          <input matInput type="password" placeholder="Contraseña" name="password" required ngModel>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" class="login-container__button">Iniciar sesión</button>
+        <button mat-raised-button color="primary" class="login-container__button" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
       </form>
     </mat-card-content>
   </mat-card>
