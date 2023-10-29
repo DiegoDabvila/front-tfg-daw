@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {retedMovieResponseMock} from "../../mocks/rented-movie-response.mock";
 import {UserInterface} from "../../Interfaces/movie.interface";
 import {FormControl} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
@@ -53,7 +52,7 @@ export class UserManagementComponent implements OnInit {
     for (let i = 0; i < this.numberOfUsers; i++) {
       this.users.push({
         id: i,
-        username: `User${i}`,
+        username: `UserName ${i}`,
         name: `User ${i}`,
         surnames: 'Surname',
         isAdmin: i % 2 === 0
@@ -64,7 +63,7 @@ export class UserManagementComponent implements OnInit {
   filterUsers(value: string): UserInterface[] {
     const filterValue = value.toLowerCase();
     return this.users.filter(user =>
-      user.name.toLowerCase().includes(filterValue)
+      user.username.toLowerCase().includes(filterValue)
     );
   }
 }

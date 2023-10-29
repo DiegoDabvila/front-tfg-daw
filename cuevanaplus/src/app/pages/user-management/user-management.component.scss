@@ -43,6 +43,14 @@
       overflow-y: auto;
       width: 210px;
 
+      &__options{
+        cursor: pointer;
+      }
+
+      &__options mat-list-item:hover{
+        background-color: #353D5A;
+      }
+
       &::-webkit-scrollbar {
         width: 8px;
       }
