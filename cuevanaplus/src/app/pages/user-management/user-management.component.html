@@ -28,8 +28,20 @@
     </div>
 
     <div class="user-management-page__edit-card__user-list ">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input
+          type="text"
+          placeholder="Nombre"
+          matInput
+          [formControl]="filterControl"
+          [matAutocomplete]="auto"
+        >
+        <mat-autocomplete #auto="matAutocomplete">
+        </mat-autocomplete>
+      </mat-form-field>
       <mat-list class="custom-scroll-list">
-        <mat-list-item (click)="selectUser(user)" *ngFor="let user of users">{{user.name}}, {{user.surnames}}</mat-list-item>
+        <mat-list-item *ngFor="let user of filteredOptions | async">{{user.name}}</mat-list-item>
       </mat-list>
     </div>
 
