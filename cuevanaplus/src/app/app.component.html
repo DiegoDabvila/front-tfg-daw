@@ -1,21 +1,41 @@
 
 <mat-sidenav-container class="side">
   <mat-sidenav #sidenav mode="over">
-    <div class="app">
-      sadfasd
+    <div class="side-nav-options"  (click)="closeSideNav()">
+      <div routerLink="/home">
+        <mat-icon>home</mat-icon>
+        <span>
+          Home
+        </span>
+      </div>
+
+      <div routerLink="/movie-edit">
+        <mat-icon>edit</mat-icon>
+        <span>
+          Movie Edit
+        </span>
+      </div>
+
+      <div routerLink="/user-management">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>
+          User Management
+        </span>
+      </div>
+
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content class="side-nav-content">
     <mat-toolbar class="mat-toolbar">
       <div class="header">
-        <div class="header__right-info">
+        <div class="header__left-options">
           <button (click)="openSidenav()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
             <mat-icon>home</mat-icon>
           </button>
           <span>CuevanaPlus</span>
         </div>
-        <div class="header__left-info">
+        <div>
           <span>Nombre de usuario</span>
         </div>
       </div>

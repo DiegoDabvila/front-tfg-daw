@@ -5,6 +5,13 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  &__left-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .side-nav-content{
@@ -13,4 +20,22 @@
 
 .router{
   height: 100%;
+}
+
+.side-nav-options div{
+  width: 200px;
+  padding: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  align-content: center;
+  cursor: pointer;
+  span{
+    font-size: 18px;
+    padding: 20px;
+  }
+}
+
+.side-nav-options div:hover{
+  background-color: #333333;
 }
