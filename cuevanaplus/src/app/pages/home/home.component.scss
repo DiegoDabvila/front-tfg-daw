@@ -46,10 +46,14 @@
         margin: 20px;
         padding: 20px;
         background-color: #1E2747;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
         &__film-image {
           width: 100%;
           max-height: 300px;
+          max-width: 200px;
           margin-bottom: 10px;
           border-radius: 10px;
         }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {RentedMovieResponse} from "../../Interfaces/movie.interface";
 import {retedMovieResponseMock} from "../../mocks/rented-movie-response.mock";
 import {Router} from "@angular/router";
+import {AppManagerService} from "../../services/app-manager.service";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,9 @@ export class HomeComponent implements OnInit {
   films: RentedMovieResponse[] = []
   numberOfMovies = 25
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private appManager: AppManagerService) {
+    this.appManager.updateShowHeader(true)
+  }
 
   ngOnInit(): void {
     for(let i = 0; i < this.numberOfMovies; i++){

@@ -27,7 +27,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="side-nav-content">
-    <mat-toolbar class="mat-toolbar">
+    <mat-toolbar class="mat-toolbar" *ngIf="showHeader">
       <div class="header">
         <div class="header__left-options">
           <button (click)="openSidenav()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">

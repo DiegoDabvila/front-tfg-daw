@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserInterface} from "../../Interfaces/movie.interface";
 import {FormControl} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
+import {AppManagerService} from "../../services/app-manager.service";
 
 enum OpcionesUsuarioEnum {
   CrearUsuario = 'Crear Usuario',
@@ -29,7 +30,9 @@ export class UserManagementComponent implements OnInit {
   numberOfUsers = 25;
   createOrEdit: string = OpcionesUsuarioEnum.CrearUsuario;
 
-  constructor() {}
+  constructor(private appManager: AppManagerService) {
+    this.appManager.updateShowHeader(true)
+  }
 
   ngOnInit(): void {
     this.loadMockData();

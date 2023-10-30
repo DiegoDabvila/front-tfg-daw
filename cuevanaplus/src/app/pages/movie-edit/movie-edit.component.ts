@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {retedMovieResponseMock} from "../../mocks/rented-movie-response.mock";
+import {AppManagerService} from "../../services/app-manager.service";
 
 @Component({
   selector: 'app-movie-edit',
@@ -10,7 +11,9 @@ export class MovieEditComponent implements OnInit {
 
   film = retedMovieResponseMock();
 
-  constructor() { }
+  constructor(private appManager: AppManagerService) {
+    this.appManager.updateShowHeader(true)
+  }
 
   ngOnInit(): void {
   }
