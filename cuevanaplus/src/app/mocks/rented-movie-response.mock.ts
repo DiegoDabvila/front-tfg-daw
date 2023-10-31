@@ -1,6 +1,6 @@
 export const retedMovieResponseMock = () => ({
     id: 1,
-      userId: 101,
+    userId: 101,
     movieId: 201,
     rentalDate: new Date('2023-01-15'),
     movie: {

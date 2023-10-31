@@ -19,7 +19,7 @@
         <mat-card-content>
           <p>Director: {{ film.movie.director.name }}</p>
           <p>Fecha de lanzamiento: {{ film.movie.releaseDate | date }}</p>
-          <button mat-button (click)="goTodetailPage(film.movie.id)" >Ver</button>
+          <button mat-button (click)="goToEditPage(film.movie.id)" >Editar</button>
         </mat-card-content>
       </mat-card>
     </div>

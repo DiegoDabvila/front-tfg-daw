@@ -24,10 +24,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  goTodetailPage(movieId: number){
+  goToEditPage(movieId: number){
     this.router.navigate(['movie-edit'],{queryParams:{movieId}})
   }
-
-
 
 }
