@@ -10,11 +10,15 @@
     padding-bottom: 20px;
     &__banner-image {
       width: 100%;
+      height: auto;
       max-height: 475px;
+      object-fit: cover;
     }
     &__banner-text {
       margin-top: 20px;
+      color: white;
     }
+
   }
   .film-list{
 
