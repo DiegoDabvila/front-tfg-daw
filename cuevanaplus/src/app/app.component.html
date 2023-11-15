@@ -1,4 +1,3 @@
-
 <mat-sidenav-container class="side">
   <mat-sidenav #sidenav mode="over">
     <div class="side-nav-options"  (click)="closeSideNav()">
@@ -14,10 +13,8 @@
           User Management
         </span>
       </div>
-
     </div>
   </mat-sidenav>
-
   <mat-sidenav-content class="side-nav-content">
     <mat-toolbar class="mat-toolbar" *ngIf="showHeader">
       <div class="header">
@@ -35,7 +32,6 @@
     <div class="router">
       <router-outlet></router-outlet>
     </div>
-
   </mat-sidenav-content>
 </mat-sidenav-container>
 

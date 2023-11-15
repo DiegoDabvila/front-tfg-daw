@@ -27,7 +27,7 @@ mat-toolbar {
 }
 
 .router{
-  height: 100%;
+  height: calc(100vh - 66px);
   padding-top: 64px;
 }
 
