@@ -4,6 +4,11 @@ import {UserInterface} from "../Interfaces/movie.interface";
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
+interface AuthResponseInterface {
+  status: string
+  token: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +31,22 @@ export class AuthService {
 
   }
 
-  getAuth(){}
+  getAuth(userName: string, password: string){
+    if (!userName || !password) return;
+
+    const body = {
+      username: userName,
+      password: password
+    }
+    return this.http.post<AuthResponseInterface>( `${this.apiUrl}/login`,body).subscribe((res)=>{
+      if (res.status != "error") {
+        const token = res.token;
+      }else {
+
+      }
+
+
+    })
+  }
 
 }

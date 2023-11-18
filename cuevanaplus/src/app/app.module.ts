@@ -15,6 +15,7 @@ import {MovieEditModule} from "./pages/movie-edit/movie-edit.module";
 import {UserManagementModule} from "./pages/user-management/user-management.module";
 
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     HomeModule,
     MovieEditModule,
     UserManagementModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule
   ],
   providers: [],
   exports: [
