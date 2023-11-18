@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from "@angular/material/sidenav";
 import {AppManagerService} from "./services/app-manager.service";
+import {UserInterface} from "./Interfaces/movie.interface";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import {AppManagerService} from "./services/app-manager.service";
 export class AppComponent implements OnInit{
   title = 'cuevanaplus';
   showHeader = true
+  user: UserInterface|null = null;
+
   @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
 
   constructor(private appManager: AppManagerService) {
@@ -17,7 +20,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.appManager.showHeader$.subscribe(value=>this.showHeader=value)
-    console.log(this.showHeader)
+    this.appManager.user$.subscribe(user => {
+      this.user = user
+    })
   }
 
   openSidenav() {

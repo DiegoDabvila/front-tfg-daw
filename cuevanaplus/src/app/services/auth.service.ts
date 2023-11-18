@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {jwtDecode, JwtPayload as DefaultPayload} from "jwt-decode";
+import {AppManagerService} from "./app-manager.service";
 
 
 interface AuthResponseInterface {
@@ -22,14 +23,16 @@ interface JwtPayload extends DefaultPayload {
 })
 export class AuthService {
   private apiUrl = environment.apiUrl;
-  public user = new BehaviorSubject<UserInterface|null>(null);
+  private user = new BehaviorSubject<UserInterface|null>(null);
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar, private router: Router) { }
+  constructor(private http: HttpClient, private userManagementService: AppManagerService, private snackBar: MatSnackBar, private router: Router) { }
 
   checkAuth(){
     const token = localStorage.getItem('token');
 
     if (!token) return of(false)
+
+    if (this.user.value === null) {this.setUserInfoFromToken(token)}
 
     return this.http.get(`${this.apiUrl}/checkToken`, {
       headers: {
@@ -49,8 +52,7 @@ export class AuthService {
     return this.http.post<AuthResponseInterface>(`${this.apiUrl}/login`, body).pipe(
       tap((res) => {
         const token = res.token;
-        const decodedToken: any = jwtDecode(token)
-        this.user.next(decodedToken.user)
+        this.setUserInfoFromToken(res.token)
         console.log(this.user.value)
         localStorage.setItem('token', token);
         this.router.navigate(['/home'])
@@ -60,6 +62,14 @@ export class AuthService {
         return throwError(err);
       })
     ).subscribe();
+  }
+
+  setUserInfoFromToken(token: string){
+    const decodedToken: any = jwtDecode(token)
+    this.user.next(decodedToken.user);
+    this.user.subscribe(value => {
+      this.userManagementService.updateUserInfo(value as UserInterface);
+    })
   }
 
 }

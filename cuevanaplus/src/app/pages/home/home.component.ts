@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   films: RentedMovieResponse[] = []
   numberOfMovies = 25
 
-  constructor(private router: Router, private appManager: AppManagerService) {
+  constructor(private router: Router, private appManager: AppManagerService ) {
     this.appManager.updateShowHeader(true)
   }
 
