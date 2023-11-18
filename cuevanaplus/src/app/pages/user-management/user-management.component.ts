@@ -17,7 +17,6 @@ enum OpcionesUsuarioEnum {
 })
 export class UserManagementComponent implements OnInit {
   public user: UserInterface = {
-    id: 0,
     name: '',
     surnames: '',
     username: '',
@@ -54,7 +53,6 @@ export class UserManagementComponent implements OnInit {
   loadMockData() {
     for (let i = 0; i < this.numberOfUsers; i++) {
       this.users.push({
-        id: i,
         username: `UserName ${i}`,
         name: `User ${i}`,
         surnames: 'Surname',

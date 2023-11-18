@@ -16,6 +16,7 @@ import {UserManagementModule} from "./pages/user-management/user-management.modu
 
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {HttpClientModule} from "@angular/common/http";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {HttpClientModule} from "@angular/common/http";
     MovieEditModule,
     UserManagementModule,
     MatSidenavModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   exports: [

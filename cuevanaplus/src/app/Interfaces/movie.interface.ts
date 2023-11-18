@@ -1,10 +1,9 @@
 
 export interface UserInterface {
-  id: number;
-  username: string;
+  isAdmin: boolean;
   name: string;
   surnames: string;
-  isAdmin: boolean;
+  username: string
 }
 
 export interface DirectorInterface {
