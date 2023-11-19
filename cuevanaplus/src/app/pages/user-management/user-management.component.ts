@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserInterface} from "../../Interfaces/usersInterface.interface";
 import {FormControl, NgForm} from "@angular/forms";
-import {map, Observable, startWith} from "rxjs";
+import {map, Observable, startWith, Subject} from "rxjs";
 import {AppManagerService} from "../../services/app-manager.service";
 import {UserManagementService} from "./services/user-management.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -32,6 +32,7 @@ export class UserManagementComponent implements OnInit {
   hidePassword = true;
   users: UserInterface[] = [];
   createOrEdit: string = OpcionesUsuarioEnum.CrearUsuario;
+  filterValueChanges = new Subject<string>();
 
   constructor(
     private appManager: AppManagerService,
@@ -42,17 +43,17 @@ export class UserManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsersData();
     this.filteredOptions = this.filterControl.valueChanges.pipe(
       startWith(''),
       map(value => this.filterUsers(value))
     );
-
+    this.getUsersData();
   }
 
   getUsersData(){
     this.userManagementService.getAllUsers().subscribe((users)=>{
       this.users = users;
+      this.filterControl.setValue('')
     })
   }
 
