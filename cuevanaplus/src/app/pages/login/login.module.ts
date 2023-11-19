@@ -8,6 +8,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
-        FormsModule
+        FormsModule,
+        MatIconModule
     ]
 })
 export class LoginModule { }

@@ -47,6 +47,12 @@
         cursor: pointer;
       }
 
+      &__options mat-list-item span{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
       &__options mat-list-item:hover{
         background-color: #353D5A;
       }

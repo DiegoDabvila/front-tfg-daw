@@ -18,11 +18,20 @@
             <input matInput placeholder="Nombre de usuario" name="userName" [(ngModel)]="user.username" required>
           </mat-form-field>
 
+          <mat-form-field class="user-management-page__edit-card__edit-container__form-field">
+            <input matInput placeholder="Contraseña" [type]="hidePassword ? 'password' : 'text'" name="password" [(ngModel)]="user.password" required>
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+
           <mat-checkbox class="user-management-page__edit-card__edit-container__form-field" name="isAdmin" [(ngModel)]="user.isAdmin">
             <label>Es administrador</label>
           </mat-checkbox>
 
-          <button mat-raised-button class="user-management-page__edit-card__edit-container__button" [disabled]="userForm.invalid" (click)="editUser(user)">Editar</button>
+          <button mat-raised-button class="user-management-page__edit-card__edit-container__button" [disabled]="userForm.invalid" (click)="registerUser(user)" *ngIf="!isEdittingMode">Registar</button>
+          <button mat-raised-button class="user-management-page__edit-card__edit-container__button" [disabled]="userForm.invalid" (click)="editUser(user)" *ngIf="isEdittingMode">Editar</button>
         </form>
       </mat-card-content>
     </div>
@@ -41,7 +50,12 @@
         </mat-autocomplete>
       </mat-form-field>
       <mat-list class="user-management-page__edit-card__user-list__options">
-        <mat-list-item (click)="selectUser(user)" *ngFor="let user of filteredOptions | async">{{user.username}}</mat-list-item>
+        <mat-list-item *ngFor="let user of filteredOptions | async">
+          <span (click)="selectUser(user)">
+            {{user.username}}
+          </span>
+          <mat-icon (click)="deleteUser(user.id)">delete</mat-icon>
+        </mat-list-item>
       </mat-list>
     </div>
 

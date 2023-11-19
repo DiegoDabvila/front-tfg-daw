@@ -10,6 +10,8 @@ import {ResgisterInterface} from "./Interfaces/resgister.interface";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  hidePassword = true;
+  hideConfirmPassword = true;
   constructor(private router: Router, private registerService: RegisterService) { }
 
   onSubmit(form: NgForm) {
@@ -40,5 +42,14 @@ export class RegisterComponent {
     }
     return userData;
   }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.hideConfirmPassword = !this.hideConfirmPassword;
+  }
+
 
 }

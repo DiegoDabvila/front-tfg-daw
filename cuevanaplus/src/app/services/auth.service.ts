@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, catchError, map, of, tap, throwError} from 'rxjs';
-import {UserInterface} from "../Interfaces/filmInterface";
+import {UserInterface} from "../Interfaces/usersInterface.interface";
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {MatSnackBar} from "@angular/material/snack-bar";

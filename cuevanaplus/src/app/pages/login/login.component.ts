@@ -11,11 +11,18 @@ import {AppManagerService} from "../../services/app-manager.service";
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  hidePassword = true;
 
   constructor(private router: Router, private authService: AuthService) { }
 
   onSubmit() {
     this.authService.getAuth(this.username, this.password)
   }
+
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
+
 
 }

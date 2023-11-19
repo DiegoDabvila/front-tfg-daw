@@ -15,20 +15,27 @@
           <input matInput placeholder="Apellidos" name="surnames" required ngModel>
         </mat-form-field>
 
+        <!-- Campo de Contraseña -->
         <mat-form-field class="register-container__form-field">
-          <input matInput type="password" placeholder="Contraseña" name="password" required ngModel>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Contraseña" name="password" required ngModel>
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
         </mat-form-field>
 
+        <!-- Campo de Confirmación de Contraseña -->
         <mat-form-field class="register-container__form-field">
-          <input matInput type="password" placeholder="Confirmar Contraseña" name="confirmPassword" required ngModel
-                 (ngModelChange)="passwordMatchValidator(registerForm)">
+          <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" placeholder="Confirmar Contraseña" name="confirmPassword" required ngModel (ngModelChange)="passwordMatchValidator(registerForm)">
+          <button mat-icon-button matSuffix (click)="toggleConfirmPasswordVisibility()">
+            <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
           <div *ngIf="registerForm.controls['confirmPassword']">
             <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('passwordMismatch')">
               Las contraseñas no coinciden.
             </mat-error>
           </div>
-
         </mat-form-field>
+
 
         <button mat-raised-button color="primary" class="register-container__button" type="submit" [disabled]="registerForm.invalid">Registrarse</button>
         <div class="register-container__login-link" routerLink="/login">Logueate</div>

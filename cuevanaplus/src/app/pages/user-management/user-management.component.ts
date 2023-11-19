@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {UserInterface} from "../../Interfaces/filmInterface";
-import {FormControl} from "@angular/forms";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {UserInterface} from "../../Interfaces/usersInterface.interface";
+import {FormControl, NgForm} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {AppManagerService} from "../../services/app-manager.service";
+import {UserManagementService} from "./services/user-management.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 enum OpcionesUsuarioEnum {
   CrearUsuario = 'Crear Usuario',
   EditarUsuario = 'Editar Usuario'
 }
-
 
 @Component({
   selector: 'app-user-management',
@@ -16,6 +17,9 @@ enum OpcionesUsuarioEnum {
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
+
+  @ViewChild('userForm') userForm!: NgForm;
+
   public user: UserInterface = {
     name: '',
     surnames: '',
@@ -24,40 +28,51 @@ export class UserManagementComponent implements OnInit {
   };
   filterControl = new FormControl();
   filteredOptions?: Observable<UserInterface[]>;
-
+  isEdittingMode = false;
+  hidePassword = true;
   users: UserInterface[] = [];
-  numberOfUsers = 25;
   createOrEdit: string = OpcionesUsuarioEnum.CrearUsuario;
 
-  constructor(private appManager: AppManagerService) {
+  constructor(
+    private appManager: AppManagerService,
+    private userManagementService: UserManagementService,
+    private snackBar: MatSnackBar
+  ) {
     this.appManager.updateShowHeader(true)
   }
 
   ngOnInit(): void {
-    this.loadMockData();
+    this.getUsersData();
     this.filteredOptions = this.filterControl.valueChanges.pipe(
       startWith(''),
       map(value => this.filterUsers(value))
     );
+
   }
 
-  selectUser(event: UserInterface) {
-    this.createOrEdit = `${OpcionesUsuarioEnum.EditarUsuario} ${event.name}`;
-    this.user = event;
+  getUsersData(){
+    this.userManagementService.getAllUsers().subscribe((users)=>{
+      this.users = users;
+    })
   }
 
-  editUser(user: Partial<UserInterface>) {
+  editUser(user: UserInterface) {
+    this.userManagementService.updateUser(user.id as number, user).subscribe((e)=>{
+      this.requestAction()
+    })
   }
 
-  loadMockData() {
-    for (let i = 0; i < this.numberOfUsers; i++) {
-      this.users.push({
-        username: `UserName ${i}`,
-        name: `User ${i}`,
-        surnames: 'Surname',
-        isAdmin: i % 2 === 0
-      });
-    }
+  registerUser(user: UserInterface){
+    console.log(user)
+    this.userManagementService.registerUser(user).subscribe(()=>{
+      this.requestAction()
+    })
+  }
+
+  deleteUser(userId?: number){
+    this.userManagementService.deleteUser(userId as number).subscribe((e)=>{
+      this.requestAction()
+    })
   }
 
   filterUsers(value: string): UserInterface[] {
@@ -65,5 +80,35 @@ export class UserManagementComponent implements OnInit {
     return this.users.filter(user =>
       user.username.toLowerCase().includes(filterValue)
     );
+  }
+
+  selectUser(event: UserInterface) {
+    this.createOrEdit = `${OpcionesUsuarioEnum.EditarUsuario} ${event.name}`;
+    this.isEdittingMode = true;
+    this.user = event;
+  }
+
+  requestAction(){
+    this.snackBar.open("Registro con exito", "Cerrar", {duration: 3000})
+    this.resetForm();
+    this.getUsersData();
+  }
+
+  resetForm() {
+    this.user = {
+      name: '',
+      surnames: '',
+      username: '',
+      isAdmin: false
+    };
+    this.createOrEdit = OpcionesUsuarioEnum.CrearUsuario;
+    this.isEdittingMode = false;
+    if (this.userForm) {
+      this.userForm.resetForm();
+    }
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
   }
 }

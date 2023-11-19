@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AppManagerService} from "../../services/app-manager.service";
 import {HomeService} from "./services/home.service";
-import {AllFilmsRequestModel} from "../../models/filmModel";
-import {AllFilmsRequestInterface, FilmForUserInterface} from "../../Interfaces/filmInterface";
+import {AllFilmsRequestModel} from "../../models/filmModel.model";
+import {AllFilmsRequestInterface, FilmForUserInterface} from "../../Interfaces/filmInterface.interface";
 
 @Component({
   selector: 'app-home',

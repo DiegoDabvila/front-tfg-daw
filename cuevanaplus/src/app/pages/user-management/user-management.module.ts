@@ -11,24 +11,26 @@ import {MatListModule} from "@angular/material/list";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
   declarations: [
     UserManagementComponent
   ],
-  imports: [
-    CommonModule,
-    UserManagementRoutingModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatListModule,
-    FormsModule,
-    MatCheckboxModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule
-  ]
+    imports: [
+        CommonModule,
+        UserManagementRoutingModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatListModule,
+        FormsModule,
+        MatCheckboxModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatIconModule
+    ]
 })
 export class UserManagementModule { }

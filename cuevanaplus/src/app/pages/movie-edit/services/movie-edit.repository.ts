@@ -1,8 +1,8 @@
 import {Injectable, Injector} from '@angular/core';
 import {AbstractRepository} from "../../../services/abstract.repository";
 import {map} from "rxjs";
-import {AllFilmsRequestModel, FilmModel} from "../../../models/filmModel";
-import {FilmInterface, UpdateFilmInterface} from "../../../Interfaces/filmInterface";
+import {AllFilmsRequestModel, FilmModelModel} from "../../../models/filmModel.model";
+import {FilmInterfaceInterface, UpdateFilmInterface} from "../../../Interfaces/filmInterface.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,11 @@ export class MovieEditRepository extends AbstractRepository{
   }
 
   getFilmById(id: number){
-    return this.doRequest<FilmInterface>(
+    return this.doRequest<FilmInterfaceInterface>(
       'GET',
       `films/admin/${id}`
     ).pipe(
-      map((film) => new FilmModel(film))
+      map((film) => new FilmModelModel(film))
     )
   }
 

@@ -8,6 +8,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule} from "@angular/forms";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        FormsModule
+        FormsModule,
+        MatIconModule
     ]
 })
 export class RegisterModule { }

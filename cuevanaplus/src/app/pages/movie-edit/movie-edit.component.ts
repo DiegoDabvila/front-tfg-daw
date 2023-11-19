@@ -3,7 +3,7 @@ import {retedMovieResponseMock} from "../../mocks/rented-movie-response.mock";
 import {AppManagerService} from "../../services/app-manager.service";
 import {MovieEditService} from "./services/movie-edit.service";
 import {ActivatedRoute} from "@angular/router";
-import {FilmInterface, UpdateFilmInterface} from "../../Interfaces/filmInterface";
+import {FilmInterfaceInterface, UpdateFilmInterface} from "../../Interfaces/filmInterface.interface";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -13,7 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class MovieEditComponent implements OnInit {
 
-  film: FilmInterface = retedMovieResponseMock();
+  film: FilmInterfaceInterface = retedMovieResponseMock();
   filmId: number = 0
 
   constructor(

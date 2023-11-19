@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {MovieEditRepository} from "./movie-edit.repository";
-import {UpdateFilmInterface} from "../../../Interfaces/filmInterface";
+import {UpdateFilmInterface} from "../../../Interfaces/filmInterface.interface";
 
 @Injectable({
   providedIn: 'root'
