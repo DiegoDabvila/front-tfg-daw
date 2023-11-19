@@ -24,6 +24,11 @@
   }
 
   &__registration-link{
+    margin-top: 10px;
+  }
 
+  &__registration-link:hover{
+    text-decoration: underline;
+    color: cornsilk;
   }
 }

@@ -23,4 +23,13 @@
 
     background-color: #007AFF;
   }
+
+  &__login-link{
+    margin-top: 10px;
+  }
+
+  &__login-link:hover{
+    text-decoration: underline;
+    color: cornsilk;
+  }
 }
