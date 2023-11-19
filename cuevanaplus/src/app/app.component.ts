@@ -33,4 +33,9 @@ export class AppComponent implements OnInit{
     this.sidenav.close();
   }
 
+  logOut(){
+    localStorage.removeItem('token');
+    this.showHeader = false
+  }
+
 }

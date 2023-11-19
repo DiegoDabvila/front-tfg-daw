@@ -18,10 +18,12 @@ const routes: Routes = [
   },
   {
     path: 'movie-edit',
+    canActivate: [AuthorizationGuard],
     loadChildren: () => import('./pages/movie-edit/movie-edit.module').then((m)=> m.MovieEditModule)
   },
   {
     path: 'user-management',
+    canActivate: [AuthorizationGuard],
     loadChildren: () => import('./pages/user-management/user-management.module').then((m)=> m.UserManagementModule)
   },
   {
