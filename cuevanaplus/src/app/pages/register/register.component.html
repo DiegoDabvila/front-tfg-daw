@@ -8,7 +8,11 @@
         </mat-form-field>
 
         <mat-form-field class="register-container__form-field">
-          <input matInput placeholder="Correo Electrónico" name="email" required ngModel>
+        <input matInput placeholder="Nombre de usuario" name="username" required ngModel>
+      </mat-form-field>
+
+        <mat-form-field class="register-container__form-field">
+          <input matInput placeholder="Apellidos" name="surnames" required ngModel>
         </mat-form-field>
 
         <mat-form-field class="register-container__form-field">
@@ -16,7 +20,14 @@
         </mat-form-field>
 
         <mat-form-field class="register-container__form-field">
-          <input matInput type="password" placeholder="Confirmar Contraseña" name="confirmPassword" required ngModel>
+          <input matInput type="password" placeholder="Confirmar Contraseña" name="confirmPassword" required ngModel
+                 (ngModelChange)="passwordMatchValidator(registerForm)">
+          <div *ngIf="registerForm.controls['confirmPassword']">
+            <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('passwordMismatch')">
+              Las contraseñas no coinciden.
+            </mat-error>
+          </div>
+
         </mat-form-field>
 
         <button mat-raised-button color="primary" class="register-container__button" type="submit" [disabled]="registerForm.invalid">Registrarse</button>
