@@ -2,7 +2,7 @@
   <mat-card class="register-container__register-card">
     <mat-card-title>Registro</mat-card-title>
     <mat-card-content>
-      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      <form #registerForm="ngForm">
         <mat-form-field class="register-container__form-field">
           <input matInput placeholder="Nombre" name="name" required ngModel>
         </mat-form-field>
@@ -15,7 +15,6 @@
           <input matInput placeholder="Apellidos" name="surnames" required ngModel>
         </mat-form-field>
 
-        <!-- Campo de Contraseña -->
         <mat-form-field class="register-container__form-field">
           <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Contraseña" name="password" required ngModel>
           <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
@@ -23,7 +22,6 @@
           </button>
         </mat-form-field>
 
-        <!-- Campo de Confirmación de Contraseña -->
         <mat-form-field class="register-container__form-field">
           <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" placeholder="Confirmar Contraseña" name="confirmPassword" required ngModel (ngModelChange)="passwordMatchValidator(registerForm)">
           <button mat-icon-button matSuffix (click)="toggleConfirmPasswordVisibility()">
@@ -36,9 +34,11 @@
           </div>
         </mat-form-field>
 
-
-        <button mat-raised-button color="primary" class="register-container__button" type="submit" [disabled]="registerForm.invalid">Registrarse</button>
-        <div class="register-container__login-link" routerLink="/login">Logueate</div>
+        <button mat-raised-button color="primary" class="register-container__button" type="submit"
+                [disabled]="registerForm.invalid" (click)="submit(registerForm)">Registrarse</button>
+        <div class="register-container__login-link" >
+          <span routerLink="/login">Logueate</span>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>

@@ -34,6 +34,7 @@ export class UserManagementRepository extends AbstractRepository{
   }
 
   updateUser(userId: number, body: UserInterface){
+    console.log(body)
     return this.doRequest<UserInterface>(
       'PUT',
       `users/${userId}`,

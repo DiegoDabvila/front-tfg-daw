@@ -2,7 +2,7 @@
   <mat-card class="login-container__login-card">
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
-      <form (ngSubmit)="onSubmit()">
+      <form>
         <mat-form-field class="login-container__form-field">
           <input matInput placeholder="Usuario" name="username" [(ngModel)]="username" required>
         </mat-form-field>
@@ -15,8 +15,10 @@
         </mat-form-field>
 
 
-        <button mat-raised-button color="primary" class="login-container__button" type="submit" [disabled]="!username || !password">Iniciar sesión</button>
-        <div class="login-container__registration-link" routerLink="/register">Registrate</div>
+        <button mat-raised-button color="primary" class="login-container__button" type="submit" (click)="submit()" [disabled]="!username || !password">Iniciar sesión</button>
+        <div class="login-container__registration-link">
+         <span routerLink="/register">Registrate</span>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>

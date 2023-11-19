@@ -14,7 +14,7 @@ export class RegisterComponent {
   hideConfirmPassword = true;
   constructor(private router: Router, private registerService: RegisterService) { }
 
-  onSubmit(form: NgForm) {
+  submit(form: NgForm) {
     if (form.valid) {
       this.registerService.registerUser(this.mappFormToUserData(form)).subscribe(()=> {
         this.router.navigate(['/login'])

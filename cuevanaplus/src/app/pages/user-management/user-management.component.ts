@@ -59,6 +59,7 @@ export class UserManagementComponent implements OnInit {
 
   editUser(user: UserInterface) {
     this.userManagementService.updateUser(user.id as number, user).subscribe((e)=>{
+      console.log(user)
       this.requestAction()
     })
   }
