@@ -36,11 +36,11 @@ export interface FilmForUserInterface {
   asignnationDate: string;
   expirationTime: number;
   movieId: number;
-  movie: MovieInterface;
+  movie: FilmInterface;
   userId: number
 }
 
-export interface MovieInterface{
+export interface FilmInterface {
   director: DirectorInterface;
   directorId: number;
   id: number;
@@ -56,3 +56,9 @@ export interface UserInterface {
   username: string,
   isAdmin: boolean
 }
+
+export interface UpdateFilmInterface {
+  name: string,
+  year: number,
+  score: number,
+  imageUrl: string}

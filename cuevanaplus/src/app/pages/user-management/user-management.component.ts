@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserInterface} from "../../Interfaces/movie.interface";
+import {UserInterface} from "../../Interfaces/filmInterface";
 import {FormControl} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {AppManagerService} from "../../services/app-manager.service";

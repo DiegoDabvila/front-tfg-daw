@@ -2,35 +2,43 @@
 <div class="movie-edit-page">
   <mat-card class="movie-edit-page__edit-card">
     <div class="movie-edit-page__edit-card__film-card">
-      <img [src]="film.movie.imageUrl" alt="{{ film.movie.title }}" class="movie-edit-page__edit-card__film-card__film-image" />
-      <mat-card-title>{{ film.movie.title }}</mat-card-title>
+      <img [src]="film.imageUrl" alt="{{ film.name }}" class="movie-edit-page__edit-card__film-card__film-image" />
+      <mat-card-title>{{ film.name }}</mat-card-title>
       <mat-card-content>
-        <p>Director: {{ film.movie.director.name }}</p>
-        <p>Fecha de lanzamiento: {{ film.movie.releaseDate | date: 'dd/MM/yyyy' }}</p>
+        <p>Director: {{ film.director.name }} {{film.director.surnames}}</p>
+        <p>Fecha de lanzamiento: {{ film.year }}</p>
       </mat-card-content>
     </div>
 
     <div class="edit-container">
-      <mat-card-title>Editar: {{ film.movie.title }}</mat-card-title>
+      <mat-card-title>Editar: {{ film.name}}</mat-card-title>
       <mat-card-content>
         <form #movieForm="ngForm">
           <mat-form-field class="edit-container__form-field">
-            <input matInput placeholder="Titulo" name="title" [(ngModel)]="film.movie.title" required>
+            <input matInput placeholder="Titulo" name="title" [(ngModel)]="film.name" required>
           </mat-form-field>
 
           <mat-form-field class="edit-container__form-field">
-            <input matInput placeholder="Fecha de salida" name="releaseDate" [(ngModel)]="film.movie.releaseDate" required>
+            <input matInput placeholder="Año de salida" name="releaseDate" [(ngModel)]="film.year" required>
           </mat-form-field>
 
           <mat-form-field class="edit-container__form-field">
-            <input matInput placeholder="Portada" name="imageUrl" [(ngModel)]="film.movie.imageUrl" required>
+            <input matInput placeholder="Portada" name="imageUrl" [(ngModel)]="film.imageUrl" required>
           </mat-form-field>
 
           <mat-form-field class="edit-container__form-field">
-            <input matInput placeholder="Nombre director" name="director" [(ngModel)]="film.movie.director.name" required>
+            <input matInput placeholder="Puntuacion" name="score" type="number" [(ngModel)]="film.score" required
+                   #scoreField="ngModel" min="0" max="10">
+            <mat-error *ngIf="scoreField.invalid && (scoreField.dirty || scoreField.touched)">
+              La puntuación debe estar entre 0 y 10.
+            </mat-error>
           </mat-form-field>
 
-          <button mat-raised-button class="edit-container__button">Editar</button>
+          <mat-form-field class="edit-container__form-field">
+            <input matInput placeholder="Nombre director" name="director" [(ngModel)]="film.director.name" required>
+          </mat-form-field>
+
+          <button mat-raised-button class="edit-container__button" (click)="editFilm()">Editar</button>
         </form>
       </mat-card-content>
     </div>

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from "@angular/material/sidenav";
 import {AppManagerService} from "./services/app-manager.service";
-import {UserInterface} from "./Interfaces/movie.interface";
+import {UserInterface} from "./Interfaces/filmInterface";
 
 @Component({
   selector: 'app-root',

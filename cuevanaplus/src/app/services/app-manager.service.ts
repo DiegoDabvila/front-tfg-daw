@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {UserInterface} from "../Interfaces/movie.interface";
+import {FilmInterface, UserInterface} from "../Interfaces/filmInterface";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,8 @@ export class AppManagerService {
   #user = new BehaviorSubject<UserInterface | null>(null);
   user$ = this.#user.asObservable()
 
+  #editedMovie = new BehaviorSubject<FilmInterface | null>(null)
+  editedMovie$ = this.#editedMovie.asObservable()
   constructor() { }
 
   updateShowHeader(value: boolean) {
@@ -21,6 +23,10 @@ export class AppManagerService {
 
   updateUserInfo(user: UserInterface){
     this.#user.next(user)
+  }
+
+  updateEditedMovie(movie: FilmInterface) {
+    this.#editedMovie.next(movie);
   }
 
 }

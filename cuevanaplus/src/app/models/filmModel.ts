@@ -1,8 +1,8 @@
 import {
   AllFilmsRequestInterface,
-  DirectorInterface, FilmForUserInterface, MovieInterface,
+  DirectorInterface, FilmForUserInterface, FilmInterface,
   UserOnMovieInterface, UsersInterface
-} from "../Interfaces/movie.interface";
+} from "../Interfaces/filmInterface";
 
 export class AllFilmsRequestModel{
   director: DirectorInterface;
@@ -31,7 +31,7 @@ export class FilmForUserModel {
   asignnationDate: string;
   expirationTime: number;
   movieId: number;
-  movie: MovieInterface;
+  movie: FilmInterface;
   userId: number
 
   constructor(data: FilmForUserInterface) {
@@ -42,4 +42,25 @@ export class FilmForUserModel {
     this.userId= data.userId;
   }
 
+}
+
+
+export class FilmModel {
+  director: DirectorInterface;
+  directorId: number;
+  id: number;
+  imageUrl: string;
+  name: string;
+  score: number;
+  year: number
+
+  constructor(data: FilmInterface) {
+    this.director = data.director
+    this.directorId = data.directorId
+    this.id = data.id
+    this.imageUrl = data.imageUrl
+    this.name = data.name
+    this.score = data.score
+    this.year = data.year
+  }
 }

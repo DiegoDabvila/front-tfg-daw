@@ -1,9 +1,8 @@
 import {Injectable, Injector} from '@angular/core';
 import {AbstractRepository} from "../../../services/abstract.repository";
 import {map} from "rxjs";
-import {AllFilmsRequestModel, FilmForUserModel} from "../../../models/movie.model";
-import {AllFilmsRequestInterface, FilmForUserInterface} from "../../../Interfaces/movie.interface";
-
+import {AllFilmsRequestModel, FilmForUserModel} from "../../../models/filmModel";
+import {AllFilmsRequestInterface, FilmForUserInterface} from "../../../Interfaces/filmInterface";
 
 @Injectable({
   providedIn: 'root'

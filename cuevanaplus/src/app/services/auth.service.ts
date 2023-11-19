@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, catchError, map, of, tap, throwError} from 'rxjs';
-import {UserInterface} from "../Interfaces/movie.interface";
+import {UserInterface} from "../Interfaces/filmInterface";
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -58,7 +58,7 @@ export class AuthService {
         this.router.navigate(['/home'])
       }),
       catchError((err) => {
-        this.snackBar.open(err.error.error)
+        this.snackBar.open(err.error.error,"Cerrar", {duration: 3000})
         return throwError(err);
       })
     ).subscribe();
