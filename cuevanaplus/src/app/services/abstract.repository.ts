@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment.prod";
@@ -9,7 +9,9 @@ import {environment} from "../../environments/environment.prod";
 export class AbstractRepository {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  protected http: HttpClient = this.injector.get(HttpClient)
+
+  constructor(protected injector: Injector) {}
 
   doRequest<T>(
     method: 'GET' | 'POST' | 'PUT' | 'DELETE',
@@ -18,6 +20,7 @@ export class AbstractRepository {
     body?: any
   ): Observable<T> {
     const headers = new HttpHeaders();
+    const token = localStorage.getItem('token');
 
     let params = new HttpParams();
     if (queryParams) {
@@ -27,7 +30,7 @@ export class AbstractRepository {
     }
 
     const options = {
-      headers,
+      headers: {Authorization: `Bearer ${token}`},
       params,
       body
     };

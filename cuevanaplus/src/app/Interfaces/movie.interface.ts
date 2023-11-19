@@ -1,39 +1,58 @@
+export interface DirectorInterface {
+  id: number;
+  age: number;
+  bio: string;
+  name: string;
+  surnames: string
+}
+
+export interface UsersInterface {
+  asignnationDate: string;
+  expirationTime: number;
+  movieId: number;
+  user: UserOnMovieInterface;
+  userId: number
+}
+
+export interface UserOnMovieInterface {
+  id?: number;
+  name: string;
+  surnames: string;
+  username: string;
+}
+
+export interface AllFilmsRequestInterface {
+  director: DirectorInterface;
+  directorId: number;
+  id: number;
+  imageUrl: string
+  name: string;
+  score: number;
+  users: UsersInterface[];
+  year: number
+}
+
+export interface FilmForUserInterface {
+  asignnationDate: string;
+  expirationTime: number;
+  movieId: number;
+  movie: MovieInterface;
+  userId: number
+}
+
+export interface MovieInterface{
+  director: DirectorInterface;
+  directorId: number;
+  id: number;
+  imageUrl: string;
+  name: string;
+  score: number;
+  year: number
+}
 
 export interface UserInterface {
-  isAdmin: boolean;
-  name: string;
-  surnames: string;
-  username: string
-}
-
-export interface DirectorInterface {
-  name: string;
-  surnames: string;
-  bio: string;
-  age: number;
-}
-
-
-export interface NewFilmResquest {
-  name: string;
-  year: number;
-  score: number;
-  imageUrl: string;
-  directorId?: number;
-  director?: DirectorInterface;
-}
-
-
-export interface RentedMovieResponse {
-  id: number;
-  userId: number;
-  movieId: number;
-  rentalDate: Date;
-  movie: {
-    id: number;
-    title: string;
-    releaseDate: Date;
-    imageUrl: string;
-    director: DirectorInterface;
-  };
+  name: string,
+  surnames: string,
+  username: string,
+  isAdmin: boolean
 }

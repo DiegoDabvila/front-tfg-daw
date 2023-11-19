@@ -7,7 +7,7 @@
           Home
         </span>
       </div>
-      <div routerLink="/user-management">
+      <div routerLink="/user-management" *ngIf="user?.isAdmin">
         <mat-icon>manage_accounts</mat-icon>
         <span>
           User Management

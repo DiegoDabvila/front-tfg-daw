@@ -12,17 +12,32 @@
       <span><h1>Listado de Películas</h1></span>
     </div>
 
-    <div class="film-list__film-card-container">
-      <mat-card *ngFor="let film of films" class="film-list__film-card-container__film-card">
-        <img [src]="film.movie.imageUrl" alt="{{ film.movie.title }}" class="film-list__film-card-container__film-card__film-image" />
-        <mat-card-title>{{ film.movie.title }}</mat-card-title>
+    <div class="film-list__film-card-container" *ngIf="isAdmin; else userDashboard">
+      <mat-card *ngFor="let film of allFilms" class="film-list__film-card-container__film-card">
+        <img [src]="film.imageUrl" alt="{{ film.name }}" class="film-list__film-card-container__film-card__film-image" />
+        <mat-card-title>{{ film.name }}</mat-card-title>
         <mat-card-content>
-          <p>Director: {{ film.movie.director.name }}</p>
-          <p>Fecha de lanzamiento: {{ film.movie.releaseDate | date }}</p>
-          <button mat-button (click)="goToEditPage(film.movie.id)" >Editar</button>
+          <p>Director: {{ film.director.name }} {{film.director.surnames}}</p>
+          <p>Fecha de lanzamiento: {{ film.year }}</p>
+          <button mat-button (click)="goToEditPage(film.id)" >Editar</button>
         </mat-card-content>
       </mat-card>
     </div>
+
+
+
+    <ng-template #userDashboard>
+      <div  class="film-list__film-card-container" >
+        <mat-card *ngFor="let userFilm of userFilms" class="film-list__film-card-container__film-card">
+          <img [src]="userFilm.movie.imageUrl" alt="{{ userFilm.movie.name }}" class="film-list__film-card-container__film-card__film-image" />
+          <mat-card-title>{{ userFilm.movie.name }}</mat-card-title>
+          <mat-card-content>
+            <p>Director: {{ userFilm.movie.director.name }} {{ userFilm.movie.director.surnames}}</p>
+            <p>Fecha de lanzamiento: {{ userFilm.movie.year }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-template>
   </div>
 
 </div>

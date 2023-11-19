@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {RentedMovieResponse} from "../../Interfaces/movie.interface";
-import {retedMovieResponseMock} from "../../mocks/rented-movie-response.mock";
 import {Router} from "@angular/router";
 import {AppManagerService} from "../../services/app-manager.service";
+import {HomeService} from "./services/home.service";
+import {AllFilmsRequestModel} from "../../models/movie.model";
+import {AllFilmsRequestInterface, FilmForUserInterface} from "../../Interfaces/movie.interface";
 
 @Component({
   selector: 'app-home',
@@ -11,21 +12,45 @@ import {AppManagerService} from "../../services/app-manager.service";
 })
 export class HomeComponent implements OnInit {
 
-  films: RentedMovieResponse[] = []
-  numberOfMovies = 25
+  allFilms: AllFilmsRequestInterface[] = []
+  userFilms: FilmForUserInterface[] = []
+  isAdmin?: boolean;
 
-  constructor(private router: Router, private appManager: AppManagerService ) {
+  constructor(
+    private router: Router,
+    private appManager: AppManagerService,
+    private homeService: HomeService
+  ) {
     this.appManager.updateShowHeader(true)
   }
 
   ngOnInit(): void {
-    for(let i = 0; i < this.numberOfMovies; i++){
-      this.films.push(retedMovieResponseMock())
-    }
+    this.appManager.user$.subscribe((userData) => {
+      this.isAdmin = userData?.isAdmin
+      if (this.isAdmin){
+        this.getAdminFilmsData()
+      }else {
+        this.getUserFilmsData()
+      }
+    })
   }
 
   goToEditPage(movieId: number){
     this.router.navigate(['movie-edit'],{queryParams:{movieId}})
+  }
+
+  getAdminFilmsData(){
+    this.homeService.getAllFilms().subscribe((films) => {
+      this.allFilms = films
+      console.log(this.allFilms)
+    })
+  }
+
+  getUserFilmsData(){
+    this.homeService.getUserFilm().subscribe(films => {
+      this.userFilms = films
+      console.log(this.userFilms)
+    })
   }
 
 }

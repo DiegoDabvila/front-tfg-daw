@@ -14,7 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
         CommonModule,
         HomeRoutingModule,
         MatCardModule,
-        MatButtonModule
+        MatButtonModule,
     ]
 })
 export class HomeModule { }
