@@ -42,14 +42,12 @@ export class HomeComponent implements OnInit {
   getAdminFilmsData(){
     this.homeService.getAllFilms().subscribe((films) => {
       this.allFilms = films
-      console.log(this.allFilms)
     })
   }
 
   getUserFilmsData(){
     this.homeService.getUserFilm().subscribe(films => {
       this.userFilms = films
-      console.log(this.userFilms)
     })
   }
 

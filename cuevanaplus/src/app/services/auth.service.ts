@@ -53,7 +53,6 @@ export class AuthService {
       tap((res) => {
         const token = res.token;
         this.setUserInfoFromToken(res.token)
-        console.log(this.user.value)
         localStorage.setItem('token', token);
         this.router.navigate(['/home'])
       }),

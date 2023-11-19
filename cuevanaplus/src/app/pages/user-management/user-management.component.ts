@@ -47,7 +47,6 @@ export class UserManagementComponent implements OnInit {
   }
 
   editUser(user: Partial<UserInterface>) {
-    console.log(user);
   }
 
   loadMockData() {
