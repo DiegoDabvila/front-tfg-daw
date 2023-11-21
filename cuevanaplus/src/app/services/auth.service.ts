@@ -25,7 +25,11 @@ export class AuthService {
   private apiUrl = environment.apiUrl;
   private user = new BehaviorSubject<UserInterface|null>(null);
 
-  constructor(private http: HttpClient, private userManagementService: AppManagerService, private snackBar: MatSnackBar, private router: Router) { }
+  constructor(
+    private http: HttpClient, private userManagementService: AppManagerService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) { }
 
   checkAuth(){
     const token = localStorage.getItem('token');
@@ -38,8 +42,9 @@ export class AuthService {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    }).pipe(map((res)=>{return true}), catchError(err => of(false)));
-
+    }).pipe(map(()=>{
+      this.setUserInfoFromToken(token)
+      return true}), catchError(err => of(false)));
   }
 
   getAuth(userName: string, password: string){
@@ -52,7 +57,6 @@ export class AuthService {
     return this.http.post<AuthResponseInterface>(`${this.apiUrl}/login`, body).pipe(
       tap((res) => {
         const token = res.token;
-        this.setUserInfoFromToken(res.token)
         localStorage.setItem('token', token);
         this.router.navigate(['/home'])
       }),

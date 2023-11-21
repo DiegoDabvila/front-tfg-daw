@@ -1,6 +1,6 @@
 import {Injectable, Injector} from '@angular/core';
 import {AbstractRepository} from "../../../services/abstract.repository";
-import {map} from "rxjs";
+import {debounceTime, map} from "rxjs";
 import {AllFilmsRequestModel, FilmForUserModel} from "../../../models/filmModel.model";
 import {AllFilmsRequestInterface, FilmForUserInterface} from "../../../Interfaces/filmInterface.interface";
 
