@@ -75,4 +75,15 @@ export class AuthService {
     })
   }
 
+  getUserInfo(): UserInterface | null {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const decodedToken: JwtPayload = jwtDecode(token);
+      return decodedToken?.user || null;
+    }
+
+    return null;
+  }
+
 }
