@@ -9,7 +9,6 @@ import {AllFilmsRequestInterface, FilmForUserInterface} from "../../../Interface
 })
 export class HomeRepositoryService extends AbstractRepository{
 
-
   constructor(injector: Injector) {
     super(injector)
   }

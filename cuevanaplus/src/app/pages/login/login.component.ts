@@ -16,7 +16,6 @@ export class LoginComponent {
   constructor(private router: Router, private authService: AuthService) { }
 
   submit() {
-    console.log('e')
     this.authService.getAuth(this.username, this.password)
   }
 
