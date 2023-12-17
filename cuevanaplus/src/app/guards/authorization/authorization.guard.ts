@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable, of, switchMap} from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
 @Injectable({
@@ -14,23 +14,36 @@ export class AuthorizationGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const isAdmin = this.authService.getUserInfo()?.isAdmin || false;
-    const checkAuth = this.authService.checkAuth()
 
-    if (checkAuth){
-      if (state.url === '/home'){
-        return true
-      }else {
-        if (isAdmin){
-          return true;
-        }else {
-          this.router.navigate(['/home']);
-          return false
+    return this.authService.checkAuth().pipe(
+      switchMap((isAuthenticated: boolean) => {
+        const isAdmin = this.authService.getUserInfo()?.isAdmin || false;
+
+        if (isAuthenticated) {
+          if (state.url === '/home') {
+            return of(true);
+          } else {
+            if (isAdmin) {
+              return of(true);
+            } else {
+              this.router.navigate(['/home']);
+              return of(false);
+            }
+          }
+        } else {
+          this.router.navigate(['/login']);
+          return of(false);
         }
-      }
-    }else {
-      this.router.navigate(['/login']);
-      return false;
-    }
+      })
+    );
+  }
+
+  isAuthenticated(){
+    let isAuthenticated = false
+    this.authService.checkAuth().subscribe((res)=> {
+    isAuthenticated = res
+      console.log(res)
+    })
+    return isAuthenticated
   }
 }
